@@ -4,6 +4,6 @@
     "name": "Chrome Extension Template",
     "description": "description",
     "action": {
-        "default_popup": "./index.html"
+        "default_popup": "./dist/index.html"
     }
 }
