@@ -33,16 +33,19 @@ export default function EventList() {
 
     return (
         <>
-            {error && <strong>Error: {JSON.stringify(error)}</strong>}
-            {loading && <span>Collection Loading...</span>}
+            {error && <strong style={{color: "red"}}>Error: {JSON.stringify(error)}</strong>}
+            {loading && <span className="loading loading-spinner loading-lg" />}
             {snapshot && <ul>
                 {
                     snapshot?.docs.map((snap) => {
                         const data = snap.data()
                         return (
-                            <>
-                                <li key={snap.id}>{data.title}</li>
-                            </>
+                            <article key={data.title}>
+                                <h2>{data.title}</h2>
+                                <p>{data.companyName}</p>
+                                <p>{data.date.toISOString()}</p>
+                                <a href={data.weblink}>{data.weblink}</a>
+                            </article>
                         )
                     })
                 }
