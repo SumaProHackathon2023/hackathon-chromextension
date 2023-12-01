@@ -40,11 +40,9 @@ export default function EventList() {
                     snapshot?.docs.map((snap) => {
                         const data = snap.data()
                         return (
-                            <article key={data.title}>
-                                <h2>{data.title}</h2>
+                            <article key={data.title} className="alert mb-5">
                                 <p>{data.companyName}</p>
-                                <p>{data.date.toISOString()}</p>
-                                <a href={data.weblink}>{data.weblink}</a>
+                                <a href={data.weblink}>{data.title}</a>
                             </article>
                         )
                     })

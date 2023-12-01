@@ -24,7 +24,5 @@
       "web"
     ]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
