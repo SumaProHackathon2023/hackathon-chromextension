@@ -1,5 +1,5 @@
-import { collection,DocumentData,FirestoreDataConverter,query, QueryDocumentSnapshot, SnapshotOptions, WithFieldValue } from "firebase/firestore";
-import { firestore } from "./firebase-init";
+import { collection,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
+import { firestore } from "./firebase-init.js";
 import {useFirestoreQuery} from "@react-query-firebase/firestore"
 
 type Event = {
@@ -51,6 +51,4 @@ export default function EventList() {
                 }
         </ul>
     )
-    
-
 }
