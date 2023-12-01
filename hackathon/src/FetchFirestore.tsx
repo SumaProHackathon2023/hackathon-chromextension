@@ -1,4 +1,4 @@
-import { collection,query,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
+import { limit,collection,query,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
 import { firestore } from "./firebase-init";
 import {useCollection} from "react-firebase-hooks/firestore"
 type Event = {
@@ -28,22 +28,21 @@ const Converter: FirestoreDataConverter<Event> = {
 
 
 export default function EventList() {
-    const EventCollect = query(collection(firestore, "event").withConverter<Event>(Converter))
+    const EventCollect = query(collection(firestore, "event"),limit(3)).withConverter<Event>(Converter)
     const [snapshot,loading,error] = useCollection(EventCollect)
 
     return (
         <>
             {error && <strong style={{color: "red"}}>Error: {JSON.stringify(error)}</strong>}
             {loading && <span className="loading loading-spinner loading-lg" />}
-            {snapshot && <ul>
+            {snapshot && <ul className="menu p-3 w-56 rounded-box">
                 {
                     snapshot?.docs.map((snap) => {
                         const data = snap.data()
                         return (
-                            <article key={data.title} className="alert mb-5">
-                                <p>{data.companyName}</p>
-                                <a href={data.weblink}>{data.title}</a>
-                            </article>
+                            <li className="mb-3" key={data.title}>
+                                <a className="babge" href={data.weblink}>{data.title}</a>
+                            </li>
                         )
                     })
                 }

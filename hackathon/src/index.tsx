@@ -5,7 +5,7 @@ import "./index.css"
 function Popup() {
     return (
         <>
-            <h1 className='text-2xl'>Show Data</h1>
+            <h1 className='text-xl'>Join Event!</h1>
             <EventList />
         </>
     )
