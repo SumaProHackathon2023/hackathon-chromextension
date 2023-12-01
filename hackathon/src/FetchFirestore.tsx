@@ -1,7 +1,6 @@
-import { collection,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
-import { firestore } from "./firebase-init.js";
-import {useFirestoreQuery} from "@react-query-firebase/firestore"
-
+import { collection,query,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
+import { firestore } from "./firebase-init";
+import {useCollection} from "react-firebase-hooks/firestore"
 type Event = {
     companyName: string,
     date: Date,
@@ -29,16 +28,14 @@ const Converter: FirestoreDataConverter<Event> = {
 
 
 export default function EventList() {
-    const EventCollect = collection(firestore, "event").withConverter<Event>(Converter)
-    const EventQuery = useFirestoreQuery<Event>(["event"],EventCollect,{
-        subscribe: true
-    })
-    if(EventQuery.isLoading){
-        return <div>loading...</div>
-    }
-    const snapshot = EventQuery.data
+    const EventCollect = query(collection(firestore, "event").withConverter<Event>(Converter))
+    const [snapshot,loading,error] = useCollection(EventCollect)
+
     return (
-        <ul>
+        <>
+            {error && <strong>Error: {JSON.stringify(error)}</strong>}
+            {loading && <span>Collection Loading...</span>}
+            {snapshot && <ul>
                 {
                     snapshot?.docs.map((snap) => {
                         const data = snap.data()
@@ -49,6 +46,8 @@ export default function EventList() {
                         )
                     })
                 }
-        </ul>
+        </ul>}
+        </>
+        
     )
 }

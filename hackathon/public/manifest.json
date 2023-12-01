@@ -5,7 +5,7 @@
     "description": "description",
     "action": {
         "default_title": "PopUp View",
-        "default_popup": "popup.html"
+        "default_popup": "index.html"
     },
     "permissions": ["storage"]
 }
