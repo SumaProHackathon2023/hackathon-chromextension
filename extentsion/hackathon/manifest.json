@@ -1,9 +1,0 @@
-{
-    "manifest_version": 3,
-    "version": "0.1",
-    "name": "Chrome Extension Template",
-    "description": "description",
-    "action": {
-        "default_popup": "./dist/index.html"
-    }
-}
