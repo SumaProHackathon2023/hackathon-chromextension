@@ -33,6 +33,7 @@ export default function EventList() {
 
     return (
         <>
+            <h1 className='text-xl'>Join Event!</h1>
             {error && <strong style={{color: "red"}}>Error: {JSON.stringify(error)}</strong>}
             {loading && <span className="loading loading-spinner loading-lg" />}
             {snapshot && <ul className="menu p-3 w-56 rounded-box">
