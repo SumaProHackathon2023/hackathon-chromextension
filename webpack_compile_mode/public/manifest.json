@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "version": "0.1",
+    "name": "学外イベントに簡単に参加できるようにするための拡張機能です。(Webpack)",
+    "description": "description",
+    "action": {
+        "default_title": "PopUp View",
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://navi.mars.kanazawa-it.ac.jp/portal/*"
+            ],
+            "js": ["content.js"],
+            "run_at": "document_idle"
+        }
+    ]
+}
