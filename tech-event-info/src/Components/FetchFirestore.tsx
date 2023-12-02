@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
-import { limit,collection,query,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
+import { limit,collection,query,type DocumentData,type FirestoreDataConverter, QueryDocumentSnapshot, type WithFieldValue } from "firebase/firestore";
 import { firestore } from "./firebase-init";
 
 import {useCollection} from "react-firebase-hooks/firestore"
@@ -54,13 +54,12 @@ export default function EventList() {
 							<li className="mb-3" key={snap.data().title}> 
 								<a 
 									id="event-link"
-									className="badge"
 									onClick={async (event) => {
 										event.preventDefault();
 										await (chrome.tabs.create({url: snap.data().webLink}));
 									}}
 								>
-									{snap.data().title} {snap.data().webLink} 
+									{snap.data().title}
 								</a>
 							</li>
 						);
