@@ -1,13 +1,14 @@
-import { createRoot } from 'react-dom/client';
-import EventList from './FetchFirestore';
-import "./index.css"
+import React from "react";
+import { createRoot } from "react-dom/client";
+import EventList from "./FetchFirestore";
+import "./index.css";
 
 function Popup() {
-    return (
-        <>
-            <EventList />
-        </>
-    )
+	return (
+		<>
+			<EventList />
+		</>
+	);
 }
-createRoot(document.getElementById('root') as HTMLElement).render(<Popup />)
+createRoot(document.getElementById("root") as HTMLElement).render(<Popup />);
 
