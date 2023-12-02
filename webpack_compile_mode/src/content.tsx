@@ -1,5 +1,7 @@
-import {createRoot} from "react-dom/client"
+import React from "react";
+import {createRoot} from "react-dom/client";
 function Content(){
+
     return (
         {/*CSSをタグ内に直書きはあまり綺麗ではないので修正しよう*/}
         <div id="glass" style={{
@@ -31,14 +33,14 @@ function Content(){
 /**
  * Insert Element
  */
-const BodyElement = document.body as HTMLBodyElement
-const TOPElement = document.getElementsByClassName("TOP") 
+const BodyElement = document.body as HTMLBodyElement;
+const TOPElement = document.getElementsByClassName("TOP") ;
 
-const articleElement = document.createElement("article")
-articleElement.id = "append-root"
+const articleElement = document.createElement("article");
+articleElement.id = "append-root";
 
-BodyElement.insertBefore(articleElement,TOPElement.item(0) as Element)
-createRoot(articleElement as HTMLElement).render(<Content />)
+BodyElement.insertBefore(articleElement,TOPElement.item(0) as Element);
+createRoot(articleElement as HTMLElement).render(<Content />);
 
 
 
@@ -46,23 +48,23 @@ createRoot(articleElement as HTMLElement).render(<Content />)
  * Body Element Position Relative for Article Element FadeUp
  */
 
-BodyElement.style.position = "relative"
-BodyElement.style.height = "100vh"
-BodyElement.style.width = "100vw"
+BodyElement.style.position = "relative";
+BodyElement.style.height = "100vh";
+BodyElement.style.width = "100vw";
 
 /**
  * Article Element Style
  */
-articleElement.style.position = "absolute"
-articleElement.style.height = "75vh"
-articleElement.style.width = "75vw"
-articleElement.style.margin = "auto"
-articleElement.style.inset = "auto 0"
-articleElement.style.display = "flex"
-articleElement.style.justifyContent = "center"
-articleElement.style.flexDirection = "column"
-articleElement.style.backgroundColor = "rbga(255,255,255,0.5)"
-articleElement.style.zIndex = "1000"
+articleElement.style.position = "absolute";
+articleElement.style.height = "75vh";
+articleElement.style.width = "75vw";
+articleElement.style.margin = "auto";
+articleElement.style.inset = "auto 0";
+articleElement.style.display = "flex";
+articleElement.style.justifyContent = "center";
+articleElement.style.flexDirection = "column";
+articleElement.style.backgroundColor = "rbga(255,255,255,0.5)";
+articleElement.style.zIndex = "1000";
 
 
 /**
@@ -70,23 +72,23 @@ articleElement.style.zIndex = "1000"
  */
 
 const FadeUpkeyframes = new KeyframeEffect(
-    articleElement,
-    [
-        {transform: "translateY(100px)",opacity: "0"},
-        {transform: "translateY(0)",opacity: "1"}
-    ],
-    {
-        duration: 10000,
-        fill:"forwards"
-    }
-)
+	articleElement,
+	[
+		{transform: "translateY(100px)",opacity: "0"},
+		{transform: "translateY(0)",opacity: "1"}
+	],
+	{
+		duration: 10000,
+		fill:"forwards"
+	}
+);
 
 
 const FadeUpAnimate = new Animation(
-    FadeUpkeyframes,
-    document.timeline
-)
+	FadeUpkeyframes,
+	document.timeline
+);
 
 
-FadeUpAnimate.play()
+FadeUpAnimate.play();
 
