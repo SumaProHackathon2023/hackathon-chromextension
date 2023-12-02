@@ -1,6 +1,7 @@
 import {createRoot} from "react-dom/client"
 function Content(){
     return (
+        {/*CSSをタグ内に直書きはあまり綺麗ではないので修正しよう*/}
         <div id="glass" style={{
             backgroundColor: "rgba(255,255,255,0.5)",
             borderRadius: "15px",
@@ -17,6 +18,7 @@ function Content(){
             </button>
             <h1 style={{fontSize: "3em",textAlign: "center",}}>学外イベントに参加しよう！！</h1>
             <ul>
+            {/*仮置きのデータ*/}
             {["学内イベントに参加しよう！","学内イベントに参加しよう！","学内イベントに参加しよう！","学内イベントに参加しよう！","学内イベントに参加しよう！","学内イベントに参加しよう！"].map((str,i) => {
                 return (
                     <li key={i}>{str}<br/></li>
