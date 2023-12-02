@@ -1,6 +1,9 @@
 import { limit,collection,query,DocumentData,FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from "firebase/firestore";
 import { firestore } from "./firebase-init";
 import {useCollection} from "react-firebase-hooks/firestore"
+/**
+* date:Dateのとこ、実態はtimeStampなのでConverterでなんとかしないといけない。
+*/
 type Event = {
     companyName: string,
     date: Date,
@@ -14,6 +17,9 @@ const Converter: FirestoreDataConverter<Event> = {
         snapshot: QueryDocumentSnapshot
     ): Event {
         const data = snapshot.data();
+        /*
+        * このあたりでTimeStamp -> Dateの変換を行う処理を書く。
+        */
         return {
             companyName: data.companyName,
             date: data.date,
@@ -21,6 +27,7 @@ const Converter: FirestoreDataConverter<Event> = {
             weblink: data.weblink
         };
     },
+    // ここはどうしようか。ないといけないので置いてるにすぎない...
     toFirestore: (function (modelObject: WithFieldValue<Event>): WithFieldValue<DocumentData> {
         throw new Error("Function not implemented.");
     })
