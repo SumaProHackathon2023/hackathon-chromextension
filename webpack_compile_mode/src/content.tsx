@@ -12,8 +12,7 @@ function Content(){
         }}>
             <button 
                 onClick={() => {document.getElementById("append-root")?.remove()}}
-                id="close"
-                style={{display: "none"}}>
+                id="close">
                 とじる
             </button>
             <h1 style={{fontSize: "3em",textAlign: "center",}}>学外イベントに参加しよう！！</h1>
