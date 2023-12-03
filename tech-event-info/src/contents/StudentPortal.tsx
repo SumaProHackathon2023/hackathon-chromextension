@@ -1,4 +1,4 @@
-import type { PlasmoCSConfig, PlasmoCSUIAnchor, PlasmoGetStyle } from "plasmo";
+import type { PlasmoCSConfig, PlasmoCSUIAnchor} from "plasmo";
 import React, { useEffect } from "react";
 
 import EventList from "../Components/FetchFirestore";
