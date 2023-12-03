@@ -38,25 +38,30 @@ const Converter: FirestoreDataConverter<Event> = {
 }
 
 
-export default function EventList() {
-	const EventCollect = query(collection(firestore, "event"),limit(3)).withConverter<Event>(Converter);
+export default function EventList({LimitNumber,ContentView}:{LimitNumber:number,ContentView: boolean}) {
+	const EventCollect = query(collection(firestore, "event"),limit(LimitNumber)).withConverter<Event>(Converter);
 	const [snapshot,loading,error] = useCollection(EventCollect);
 	return (
 		<>
 			<h1 className='text-xl'>Join Event!</h1>
 			{error && <strong style={{color: "red"}}>Error: {JSON.stringify(error)}</strong>}
 			{loading && <span className="loading loading-spinner loading-lg" />}
-			{snapshot && <ul className="menu p-3 w-56 rounded-box">
+			{snapshot && <ul className="menu p-3 w-56 rounded-box" style={{listStyle: "none",fontFamily: "sans-serif"}}>
 				{
 					snapshot?.docs.map((snap,i) => {
 						console.log(snap.data().webLink);
 						return (
-							<li className="mb-3" key={snap.data().title}> 
-								<a 
-									id="event-link"
-									onClick={async (event) => {
+							<li className="py-5" style={{
+								paddingTop: "0.75rem",
+								paddingBottom: "0.75rem"
+							}} key={snap.data().title}> 
+								<a onClick={async (event) => {
 										event.preventDefault();
-										await (chrome.tabs.create({url: snap.data().webLink}));
+										if(!ContentView){
+											await (chrome.tabs.create({url: snap.data().webLink}));
+										}else{
+											window.open(snap.data().webLink);
+										}
 									}}
 								>
 									{snap.data().title}

@@ -1,11 +1,4 @@
- import "./style.css"
+import "./style.css"
 import EventList from "~/Components/FetchFirestore"
- 
-function IndexPopup() {
- 
-  return (
-    <EventList />
-  )
-}
- 
-export default IndexPopup
+import React from "react"
+export default function IndexPopup(){return  <EventList LimitNumber={3} ContentView={false} />}
