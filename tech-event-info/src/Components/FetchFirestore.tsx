@@ -18,7 +18,7 @@ import { firestore } from "./firebase-init";
  */
 type Event = {
 	companyName: string;
-	date: Date;
+	date?: string;
 	title: string;
 	webLink: string;
 };
@@ -26,9 +26,6 @@ type Event = {
 const Converter: FirestoreDataConverter<Event> = {
 	fromFirestore(snapshot: QueryDocumentSnapshot): Event {
 		const data = snapshot.data();
-		/*
-		 * このあたりでTimeStamp -> Dateの変換を行う処理を書く。
-		 */
 		return {
 			companyName: data.companyName,
 			date: data.date,
@@ -36,7 +33,7 @@ const Converter: FirestoreDataConverter<Event> = {
 			webLink: data.webLink,
 		};
 	},
-	// ここはどうしようか。ないといけないので置いてるにすぎない...
+	// 利用しないが、型定義が必要なため、空の関数を定義
 	toFirestore: function (
 		modelObject: WithFieldValue<Event>,
 	): WithFieldValue<DocumentData> {
