@@ -43,15 +43,15 @@ export default function EventList({LimitNumber,ContentView}:{LimitNumber:number,
 	const [snapshot,loading,error] = useCollection(EventCollect);
 	return (
 		<>
-			<h1 className='text-xl'>Join Event!</h1>
+			<h1 className='text-xl  text-center'>最新イベント情報</h1>
 			{error && <strong style={{color: "red"}}>Error: {JSON.stringify(error)}</strong>}
 			{loading && <span className="loading loading-spinner loading-lg" />}
-			{snapshot && <ul className="menu p-3 w-56 rounded-box" style={{listStyle: "none",fontFamily: "sans-serif"}}>
+			{snapshot && <ul className="container mx-auto p-4 w-56 divide-y-[1px] divide-blue-200" style={{listStyle: "none",fontFamily: "sans-serif"}}>
 				{
 					snapshot?.docs.map((snap,i) => {
 						console.log(snap.data().webLink);
 						return (
-							<li className="py-5" style={{
+							<li className="py-5 " style={{
 								paddingTop: "0.75rem",
 								paddingBottom: "0.75rem"
 							}} key={snap.data().title}> 
