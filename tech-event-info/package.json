@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "test": "plasmo test"
+    "test": "plasmo test",
+    "format": "prettier --write src/**/*.{ts,tsx,js,jsx,json,css,scss,md}"
   },
   "dependencies": {
     "firebase": "^10.7.0",
